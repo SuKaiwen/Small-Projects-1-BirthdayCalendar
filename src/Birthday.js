@@ -42,7 +42,6 @@ const dummyData = [
 const Birthday = () => {
     return (
         <div style = {{justifyContent:"center", alignItems:"center", textAlign:"center"}}>
-            <h2>Birthdays here</h2>
             <div className = "container" style = {{maxWidth:"500px", width:"80%"}}>
                 {dummyData.map((data) =>
                     <div className = "row" style = {{padding:"40px", marginBottom:"15px", border: "1px solid red"}}>

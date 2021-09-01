@@ -5,7 +5,7 @@ import Birthday from './Birthday';
 function App() {
   return (
     <div className="App">
-      <h2>Birthday Calendar</h2>
+      <h2 style = {{marginBottom:"100px"}}>Birthday Calendar</h2>
       <Birthday />
     </div>
   );
