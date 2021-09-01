@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const dummyData = [
     {
@@ -40,16 +41,22 @@ const dummyData = [
 
 const Birthday = () => {
     return (
-        <>
+        <div style = {{justifyContent:"center", alignItems:"center", textAlign:"center"}}>
             <h2>Birthdays here</h2>
-            {dummyData.map((data) =>
-                <div>
-                    <h2>{data.name}</h2>
-                    <h2>{data.age}</h2>
-                    <h2><img src={data.image} alt={data.name} /></h2>
-                </div>
-            )}
-        </>
+            <div className = "container" style = {{maxWidth:"500px", width:"80%"}}>
+                {dummyData.map((data) =>
+                    <div className = "row" style = {{padding:"40px", marginBottom:"15px", border: "1px solid red"}}>
+                        <div className = "col-sm">
+                            <h2><img src={data.image} alt={data.name} style = {{width:"100px", height:"100px", borderRadius:"50%"}}/></h2>
+                        </div>
+                        <div className = "col-sm">
+                            <h2 class="display-5">{data.name}</h2>
+                            <h5 class="lead" style = {{fontSize:"15px"}}>{data.age} years old</h5>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
     );
 };
 
