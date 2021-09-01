@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const dummyData = [
@@ -39,18 +39,31 @@ const dummyData = [
     },
 ];
 
-const Birthday = () => {
+function Birthday(){
+    const [dataM, setDataM] = useState(dummyData);
+
+    function removeBirthday(id){
+        setDataM(dataM.filter(item => item.id !== id));
+    }
+
+    function removeAll(){
+        setDataM([]);
+    }
+
     return (
-        <div style = {{justifyContent:"center", alignItems:"center", textAlign:"center"}}>
+        <div style = {{justifyContent:"center", alignItems:"center", textAlign:"center", backgroundColor:"#e8f4f8"}}>
+            <h1 className = "display-4" style = {{marginBottom:"20px"}}>{dataM.length} upcoming birthdays</h1>
+            <button class="btn btn-danger" onClick={() => removeAll()} style = {{marginBottom:"30px"}}>Remove All</button>
             <div className = "container" style = {{maxWidth:"500px", width:"80%"}}>
-                {dummyData.map((data) =>
-                    <div className = "row" style = {{padding:"40px", marginBottom:"15px", border: "1px solid red"}}>
+                {dataM.map((data) =>
+                    <div className = "row shadow-lg bg-white rounded" style = {{padding:"40px", marginBottom:"15px"}}>
                         <div className = "col-sm">
                             <h2><img src={data.image} alt={data.name} style = {{width:"100px", height:"100px", borderRadius:"50%"}}/></h2>
                         </div>
                         <div className = "col-sm">
-                            <h2 class="display-5">{data.name}</h2>
-                            <h5 class="lead" style = {{fontSize:"15px"}}>{data.age} years old</h5>
+                            <h2 class="display-5" style = {{fontSize:"30px"}}>{data.name}</h2>
+                            <p class="lead" style = {{fontSize:"15px"}}>{data.age} years old</p>
+                            <button class="btn btn-danger" onClick={() => removeBirthday(data.id)} >Remove</button>
                         </div>
                     </div>
                 )}
